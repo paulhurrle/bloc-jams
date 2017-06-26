@@ -88,5 +88,5 @@ html {
 
  /* Large screens (1024px) */
  @media (min-width: 1024px) {
-   /* Style information will go here */
+     html { font-size: 120%; }
  }
