@@ -22,11 +22,6 @@ body {
     z-index: 1;
 }
 
-.navbar:active {
-     color: rgb(233,50,117);
-     background-color: white;
-}
-
 .navbar .logo {
     position: relative; /* positioning will be explained in a resource */
     left: 2rem;
