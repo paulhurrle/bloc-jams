@@ -1,6 +1,11 @@
 var pointsArray = document.getElementsByClassName('point');
 
+<<<<<<< HEAD
  var animatePoints = function(points) {
+=======
+     var points = document.getElementsByClassName('point');
+
+>>>>>>> assignment8
      var revealPoint = function(index) {
          points[index].style.opacity = 1;
          points[index].style.transform = "scaleX(1) translateY(0)";
