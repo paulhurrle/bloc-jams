@@ -1,6 +1,7 @@
 var pointsArray = document.getElementsByClassName('point');
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  var animatePoints = function(points) {
 =======
      var points = document.getElementsByClassName('point');
@@ -12,10 +13,17 @@ var pointsArray = document.getElementsByClassName('point');
          points[index].style.msTransform = "scaleX(1) translateY(0)";
          points[index].style.WebkitTransform = "scaleX(1) translateY(0)";
      };
+=======
+var revealPoint = function(node) {
+    node.style.opacity = 1;
+    node.style.transform = "scaleX(1) translateY(0)";
+    node.style.msTransform = "scaleX(1) translateY(0)";
+    node.style.WebkitTransform = "scaleX(1) translateY(0)";
+};
+>>>>>>> assignment9
 
-     for (var i = 0; i < points.length; i++) {
-        revealPoint(i);
-    }
+ var animatePoints = function(nodeList) {
+     forEach(nodeList, revealPoint);
  };
 
  window.onload = function() {
