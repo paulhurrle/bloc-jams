@@ -30,6 +30,27 @@ var albumMarconi = {
     ]
 };
 
+var albumTen = {
+    title: 'Ten',
+    artist: 'Pearl Jam',
+    label: 'London Bridge Studios',
+    year: '1991',
+    albumArtUrl: 'assets/images/album_covers/pearlJamTen.jpg',
+    songs: [
+        { title: 'Once', duration: '3:52'},
+        { title: 'Even Flow', duration: '4:54'},
+        { title: 'Alive', duration: '5:41'},
+        { title: 'Why Go', duration: '3:19'},
+        { title: 'Black', duration: '5:44'},
+        { title: 'Jeremy', duration: '5:19'},
+        { title: 'Oceans', duration: '2:42'},
+        { title: 'Porch', duration: '3:31'},
+        { title: 'Garden', duration: '4:59'},
+        { title: 'Deep', duration: '4:18'},
+        { title: 'Release', duration: '9:06'}
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -42,13 +63,14 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
+ // #1
+ var albumTitle = document.getElementsByClassName('album-view-title')[0];
+ var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+ var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+ var albumImage = document.getElementsByClassName('album-cover-art')[0];
+ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
  var setCurrentAlbum = function(album) {
-     // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
-     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-     var albumImage = document.getElementsByClassName('album-cover-art')[0];
-     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
      // #2
      albumTitle.firstChild.nodeValue = album.title;
@@ -67,4 +89,14 @@ var createSongRow = function(songNumber, songName, songLength) {
 
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     var albumObjectsArray = [albumPicasso, albumMarconi, albumTen];  //How do I avoid hard coding this???
+     var index = 1;
+     var cycleAlbums = function () {
+         setCurrentAlbum(albumObjectsArray[index]);
+         index++;
+         if (index == albumObjectsArray.length) {
+             index = 0;
+         }
+     };
+     albumImage.addEventListener('click', cycleAlbums);
  };
