@@ -67,22 +67,22 @@ var createSongRow = function(songNumber, songName, songLength) {
  };
 
  var findParentByClassName = function(element, targetClass) {
-     if (element) {
-         var currentParent = element.parentElement;
-         if (!currentParent) {
-            console.log("No parent found");
-            return;
-         }
-         while (currentParent.className !== targetClass && currentParent.className !== null) {
-             currentParent = currentParent.parentElement;
-         }
-         if (currentParent !== targetClass) {
-             console.log("No parent found with that class name");
+      if (element) {
+          var currentParent = element.parentElement;
+          if (!currentParent) {
+             console.log("No parent found");
              return;
-         }
-         return currentParent;
-     }
- };
+          }
+          while (currentParent && currentParent.className !== targetClass && currentParent.className !== null) {
+              currentParent = currentParent.parentElement;
+          }
+          if (!currentParent) {
+              console.log("No parent found with that class name");
+              return;
+          }
+          return currentParent;
+      }
+  };
 
  //MY ATTEMPT AT getSongItem function
  //var getSongItem = function (elem) {
