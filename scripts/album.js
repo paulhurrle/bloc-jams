@@ -28,7 +28,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             setSong($songNumber);
             updatePlayerBarSong();
         } else if (currentlyPlayingSongNumber === $songNumber) {
-            $(this).html(playButtonTemplate);
+            $(this).html($songNumber);
             $('.main-controls .play-pause').html(playerBarPlayButton);
             currentlyPlayingSongNumber = null;
             currentSongFromAlbum = null;
