@@ -28,12 +28,33 @@ var getSongNumberCell = function(number) {
     return $('.song-item-number[data-song-number="' + number + '"]');
 };
 
+var setCurrentTimeInPlayerBar = function(currentTime) {
+    var formatTime = filterTimeCode(currentTime);
+    $(".current-time").text(formatTime);
+};
+
+var setTotalTimeInPlayerBar = function(totalTime) {
+    var formatTime = filterTimeCode(totalTime);
+    $(".total-time").text(formatTime);
+};
+
+var filterTimeCode = function(timeInSeconds) {
+    var totalTime = parseFloat(timeInSeconds).toFixed();
+    var minutes = Math.floor(totalTime / 60);
+    var seconds = Math.floor(totalTime % 60);
+    if (seconds.toString().length == 1) {
+        seconds = '0' + seconds;
+    }
+    totalTime = minutes + ":" + seconds;
+    return totalTime;
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
       + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + songLength + '</td>'
+      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
       + '</tr>'
       ;
      var $row = $(template);
@@ -117,6 +138,7 @@ var createSongRow = function(songNumber, songName, songLength) {
              var $seekBar = $('.seek-control .seek-bar');
 
              updateSeekPercentage($seekBar, seekBarFillRatio);
+             setCurrentTimeInPlayerBar(currentSoundFile.getTime());
          });
      }
  };
@@ -261,6 +283,7 @@ var togglePlayFromPlayerBar = function() {
      $(".currently-playing .artist-song-mobile").text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
      $(".currently-playing .artist-name").text(currentAlbum.artist);
      $('.main-controls .play-pause').html(playerBarPauseButton);
+     setTotalTimeInPlayerBar(currentSongFromAlbum.duration);
  };
 
  var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
