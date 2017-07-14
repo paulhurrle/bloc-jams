@@ -18,10 +18,14 @@ var seek = function(time) {
  };
 
 var setVolume = function(volume) {
+     var $volumeBar = $('.volume .seek-bar');
+
      if (currentSoundFile) {
          currentSoundFile.setVolume(volume);
      }
      currentVolume = volume;
+     $volumeBar.find('.fill').width(currentVolume + "%");
+     $volumeBar.find('.thumb').css({left: currentVolume + "%"});
  };
 
 var getSongNumberCell = function(number) {
@@ -61,7 +65,6 @@ var createSongRow = function(songNumber, songName, songLength) {
 
      var clickHandler = function() {
         var $songNumber = parseInt($(this).attr('data-song-number'));
-        var $volumeBar = $('.volume .seek-bar');
 
         if (currentlyPlayingSongNumber !== null) {
             var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
@@ -86,9 +89,6 @@ var createSongRow = function(songNumber, songName, songLength) {
                 $('.main-controls .play-pause').html(playerBarPlayButton);
             }
         }
-
-        $volumeBar.find('.fill').width(currentVolume + "%");
-        $volumeBar.find('.thumb').css({left: currentVolume + "%"});
      }
 
      var onHover = function(event) {
