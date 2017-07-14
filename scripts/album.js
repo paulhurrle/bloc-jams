@@ -146,6 +146,35 @@ var songChange = function(event) {
 };
 */
 
+var songChange = function() {
+    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+    var lastSongNumber = currentlyPlayingSongNumber;
+
+    if ($(event.currentTarget).hasClass("previous")) {
+        currentSongIndex--;
+        if (currentSongIndex < 0) {
+            currentSongIndex = currentAlbum.songs.length - 1;
+        }
+    }
+
+    if ($(event.currentTarget).hasClass("next")) {
+        currentSongIndex++;
+        if (currentSongIndex == currentAlbum.songs.length) {
+            currentSongIndex = 0;
+        }
+    }
+
+    setSong(currentSongIndex + 1);
+    updatePlayerBarSong();
+
+    var nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+    var lastSongNumberCell = getSongNumberCell(lastSongNumber);;
+
+    nextSongNumberCell.html(pauseButtonTemplate);
+    lastSongNumberCell.html(lastSongNumber);
+};
+
+/*
 var nextSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
     var lastSongNumber = currentlyPlayingSongNumber;
@@ -156,7 +185,6 @@ var nextSong = function() {
     }
 
     setSong(currentSongIndex + 1);
-    currentSoundFile.play();
     updatePlayerBarSong();
 
     var nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
@@ -198,7 +226,7 @@ var togglePlayFromPlayerBar = function() {
         $('.main-controls .play-pause').html(playerBarPlayButton);
     }
 };
-
+*/
  var updatePlayerBarSong = function() {
      $(".currently-playing .song-name").text(currentSongFromAlbum.title);
      $(".currently-playing .artist-song-mobile").text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
@@ -223,7 +251,7 @@ var togglePlayFromPlayerBar = function() {
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
-    $previousButton.click(prevSong);
-    $nextButton.click(nextSong);
+    $previousButton.click(songChange);
+    $nextButton.click(songChange);
     $playPause.click(togglePlayFromPlayerBar);
 });
