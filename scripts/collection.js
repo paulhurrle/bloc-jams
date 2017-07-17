@@ -1,31 +1,48 @@
-var buildCollectionItemTemplate = function() {
+/*
+var createSongRow = function(songNumber, songName, songLength) {
+     var template =
+        '<tr class="album-view-song-item">'
+      + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+      + '  <td class="song-item-title">' + songName + '</td>'
+      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
+      + '</tr>'
+      ;
+     var $row = $(template);
+*/
+var buildCollectionItemTemplate = function(img, album, artist, numSongs) {
      var template =
 //this is a string containing the collection-album-container as a string, using
 //the "+" sign to concatenate each line while still making it readable.
 //By placing this content in quotation marks, the script will be stored in
 //cache when the page loads, improving the load speed.
          '<div class="collection-album-container column fourth">'
-       + '  <img src="assets/images/album_covers/01.png"/>'
+       + '  <img src="assets/images/album_covers/' + img + '"/>'
        + '  <div class="collection-album-info caption">'
        + '    <p>'
-       + '      <a class="album-name" href="album.html"> The Colors </a>'
+       + '      <a class="album-name" href="album.html"> ' + album + ' </a>'
        + '      <br/>'
-       + '      <a href="album.html"> Pablo Picasso </a>'
+       + '      <a href="album.html"> ' + artist + ' </a>'
        + '      <br/>'
-       + '      X songs'
+       + '      ' + numSongs + ' songs'
        + '      <br/>'
        + '    </p>'
        + '  </div>'
        + '</div>'
        ;
-       return $(template);
+       var $album = $(template);
+
+       return $album;
 };
 
 $(window).load(function() {
      var $collectionContainer = $('.album-covers');
      $collectionContainer.empty();
-     for (var i = 0; i < 12; i++) {
-         var $newThumbnail = buildCollectionItemTemplate();
-         $collectionContainer.append($newThumbnail);
-     }
+     $collectionContainer.append(buildCollectionItemTemplate("01.png", "The Colors", "Pablo Picasso", "5"));
+     $collectionContainer.append(buildCollectionItemTemplate("20.png", "The Telephone", "Marconi", "5"));
+     $collectionContainer.append(buildCollectionItemTemplate("Ten.jpeg", "Ten", "Pearl Jam", "11"));
+
+//     for (var i = 0; i < 12; i++) {
+//         var $newThumbnail = buildCollectionItemTemplate();
+//         $collectionContainer.append($newThumbnail);
+//     }
  });
