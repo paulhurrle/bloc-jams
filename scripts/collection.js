@@ -16,7 +16,7 @@ var buildCollectionItemTemplate = function(img, album, artist, numSongs) {
 //By placing this content in quotation marks, the script will be stored in
 //cache when the page loads, improving the load speed.
          '<div class="collection-album-container column fourth">'
-       + '  <img src="assets/images/album_covers/' + img + '.png"/>'
+       + '  <img src="assets/images/album_covers/' + img + '"/>'
        + '  <div class="collection-album-info caption">'
        + '    <p>'
        + '      <a class="album-name" href="album.html"> ' + album + ' </a>'
@@ -37,8 +37,9 @@ var buildCollectionItemTemplate = function(img, album, artist, numSongs) {
 $(window).load(function() {
      var $collectionContainer = $('.album-covers');
      $collectionContainer.empty();
-     $collectionContainer.append(buildCollectionItemTemplate("01", "The Colors", "Pablo Picasso", "5"));
-     $collectionContainer.append(buildCollectionItemTemplate("20", "The Telephone", "Marconi", "5"));
+     $collectionContainer.append(buildCollectionItemTemplate("01.png", "The Colors", "Pablo Picasso", "5"));
+     $collectionContainer.append(buildCollectionItemTemplate("20.png", "The Telephone", "Marconi", "5"));
+     $collectionContainer.append(buildCollectionItemTemplate("Ten.jpeg", "The Telephone", "Marconi", "5"));
 
 //     for (var i = 0; i < 12; i++) {
 //         var $newThumbnail = buildCollectionItemTemplate();
