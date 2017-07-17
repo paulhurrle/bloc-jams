@@ -39,7 +39,7 @@ $(window).load(function() {
      $collectionContainer.empty();
      $collectionContainer.append(buildCollectionItemTemplate("01.png", "The Colors", "Pablo Picasso", "5"));
      $collectionContainer.append(buildCollectionItemTemplate("20.png", "The Telephone", "Marconi", "5"));
-     $collectionContainer.append(buildCollectionItemTemplate("Ten.jpeg", "The Telephone", "Marconi", "5"));
+     $collectionContainer.append(buildCollectionItemTemplate("Ten.jpeg", "Ten", "Pearl Jam", "11"));
 
 //     for (var i = 0; i < 12; i++) {
 //         var $newThumbnail = buildCollectionItemTemplate();
